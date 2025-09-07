@@ -283,6 +283,7 @@ QString Calculate(QString RawInput)
                     if (rawx.length() > 1 && rawx[0] == '0' && rawx != "0" && rawx[1] != '.' && rawx[1] != ',')
                     {
                         rawx[0] = '-';
+						xparanted = true;
                     }
                     if (rawy.length() > 1 && rawy[0] == '0' && rawy != "0" && rawy[1] != '.' && rawy[1] != ',')
                     {
@@ -290,28 +291,8 @@ QString Calculate(QString RawInput)
                     }
                     a = stod(rawx);
                     b = stod(rawy);
-                    if (b < 0)
-                    {
-                        double sumch = a;
-                        for (int z = abs(b) - 1; z > 0; z--)
-                        {
-                            sumch *= a;
-                        }
-                        AraInput += to_string(1 / sumch);
-                    }
-                    else if (b > 0)
-                    {
-                        double sumch = a;
-                        for (int z = b - 1; z > 0; z--)
-                        {
-                            sumch *= a;
-                        }
-                        AraInput += to_string(sumch);
-                    }
-                    else
-                    {
-                        AraInput += "1";
-                    }
+                    if(!xparanted && a < 0){AraInput += to_string(0 - pow(a, b));}
+					else{AraInput += to_string(pow(a, b));}
                 }
                 else{cerr << "Syntax Error\n\n"; RawInput = ""; AraInput = "";}
             }
