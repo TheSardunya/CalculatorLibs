@@ -1,10 +1,13 @@
 ifeq ($(OS),Windows_NT)
+	SYM = /
 	OUTPUT = test.exe
-else ifeq ($(OS),Linux)
+else
+	SYM = /
 	OUTPUT = test.out
 endif
+.PHONY : all
 COMPILER = g++
-MAINFILE = .\src\test.cpp
+MAINFILE = .$(SYM)src$(SYM)test.cpp
 all : $(OUTPUT)
-$(OUTPUT) : .\src\oreno.h .\src\oreno.cpp .\src\calculate.cpp .\src\calculate.h $(MAINFILE)
-	$(COMPILER) $(MAINFILE) .\src\oreno.cpp .\src\calculate.cpp -o $(OUTPUT)
+$(OUTPUT) : .$(SYM)src$(SYM)oreno.h .$(SYM)src$(SYM)oreno.cpp .$(SYM)src$(SYM)calculate.cpp .$(SYM)src$(SYM)calculate.h $(MAINFILE)
+	$(COMPILER) $(MAINFILE) .$(SYM)src$(SYM)oreno.cpp .$(SYM)src$(SYM)calculate.cpp -o $(OUTPUT)
