@@ -293,7 +293,6 @@ QString Calculate(QString RawInput)
                 {
                     if (sum[q] == '^')
                     {
-						cout << "\n\nq : " << q << "\n\n";
                         op = sum[q];
                         xturn = false;
                     }
