@@ -321,7 +321,7 @@ QString Calculate(QString RawInput)
                     }
                     a = stod(rawx);
                     b = stod(rawy);
-                    if(!xparanted && a < 0){AraInput += to_string(0 - pow(a, b));}
+                    if(!xparanted && a < 0){double resultD = pow(a, b);if(resultD > 0){resultD = 0 - resultD;};AraInput += to_string(resultD);}
 					else{AraInput += to_string(pow(a, b));}
                 }
                 else{cerr << "Syntax Error\n\n"; RawInput = ""; AraInput = "";}
