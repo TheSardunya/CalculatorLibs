@@ -76,6 +76,9 @@ QString Calculate(QString RawInput)
                 }
                 else{cerr << "Syntax Error\n\n"; RawInput = ""; AraInput = "";}
             }
+            else if(IRawInput.length() > 0 && IRawInput[0] == 'v'){
+					IRawInput = Calculate(IRawInput);
+			}	
             for (int x = 0; x < RawInput.length(); x++)
             {
                 if (x < startparan || x > endparan)
@@ -100,6 +103,7 @@ QString Calculate(QString RawInput)
                 }
                 else if(x == startparan)
                 {
+					
                     AraInput += Calculate(IRawInput);
                 }
             }
